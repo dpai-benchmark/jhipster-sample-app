@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.jhipster.sample.IntegrationTest;
 import io.github.jhipster.sample.domain.Authority;
 import io.github.jhipster.sample.repository.AuthorityRepository;
+import io.github.jhipster.sample.security.AuthoritiesConstants;
 import jakarta.persistence.EntityManager;
 import java.util.UUID;
 import org.junit.jupiter.api.AfterEach;
@@ -27,7 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @IntegrationTest
 @AutoConfigureMockMvc
-@WithMockUser(authorities = { "ROLE_ADMINISTRATOR" })
+@WithMockUser(authorities = AuthoritiesConstants.ADMIN)
 class AuthorityResourceIT {
 
     private static final String ENTITY_API_URL = "/api/authorities";
