@@ -12,6 +12,8 @@ OVERALL_START=$SECONDS
 
 _elapsed() { echo $(( SECONDS - ${1:-$OVERALL_START} )); }
 
+MAVEN_TEST_CMD=(./mvnw -Dtest=RememberMeIT test -q)
+
 # --- _run_tests: run tests with isolated ARTIFACTS_DIR ---
 # Usage: _run_tests <label>
 # Writes: /tmp/<label>_stdout.log, /tmp/<label>_stderr.log, /tmp/<label>_parser.json
@@ -23,7 +25,7 @@ _run_tests() {
   mkdir -p "$ARTIFACTS_DIR"
 
   set +e
-  ./mvnw verify -q > "/tmp/${label}_stdout.log" 2> "/tmp/${label}_stderr.log"
+  "${MAVEN_TEST_CMD[@]}" > "/tmp/${label}_stdout.log" 2> "/tmp/${label}_stderr.log"
   exit_code=$?
   set -e
 
