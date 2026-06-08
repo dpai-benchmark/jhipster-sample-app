@@ -5,7 +5,9 @@
   "jvm_version": "17",
   "build_system": "maven",
   "expected": {
-    "fail_to_pass": [],
+    "fail_to_pass": [
+      "io.github.jhipster.sample.web.rest.RememberMeIT"
+    ],
     "pass_to_pass": []
   },
   "environment": {
