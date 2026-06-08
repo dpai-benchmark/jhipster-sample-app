@@ -18,9 +18,8 @@ RUN git init && \
     git fetch origin --depth 1 {{ instance.base_commit }} && \
     git reset --hard FETCH_HEAD
 
-# Make mvnw executable and pre-fetch dependencies
-RUN chmod +x ./mvnw && \
-    ./mvnw dependency:go-offline -q
+# Make mvnw executable
+RUN chmod +x ./mvnw
 
 LABEL ee-bench.type="codegen"
 LABEL ee-bench.version="1.0"
