@@ -23,12 +23,12 @@ _run_tests() {
   mkdir -p "$ARTIFACTS_DIR"
 
   set +e
-  ./mvnw test -q > "/tmp/${label}_stdout.log" 2> "/tmp/${label}_stderr.log"
+  ./mvnw verify -q > "/tmp/${label}_stdout.log" 2> "/tmp/${label}_stderr.log"
   exit_code=$?
   set -e
 
   # Copy Surefire XML results to ARTIFACTS_DIR for parser (supports multi-module)
-  find "$PROJECT_ROOT" -path "*/target/surefire-reports/*.xml" -exec cp {} "$ARTIFACTS_DIR/" \; 2>/dev/null || true
+  find "$PROJECT_ROOT" \( -path "*/target/surefire-reports/*.xml" -o -path "*/target/failsafe-reports/*.xml" \) -exec cp {} "$ARTIFACTS_DIR/" \; 2>/dev/null || true
 
   python3 "$EVAL_DIR/scripts/ee_bench_parser_junit.py" "$ARTIFACTS_DIR" > "/tmp/${label}_parser.json" 2>/dev/null || echo '{}' > "/tmp/${label}_parser.json"
 
