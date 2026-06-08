@@ -6,10 +6,7 @@
   "build_system": "maven",
   "expected": {
     "fail_to_pass": [
-      "io.github.jhipster.sample.web.filter.SpaWebFilterIT",
-      "io.github.jhipster.sample.web.rest.AuthorityResourceIT",
-      "io.github.jhipster.sample.web.rest.PublicUserResourceIT",
-      "io.github.jhipster.sample.web.rest.UserResourceIT"
+      "io.github.jhipster.sample.web.rest.AuthorityResourceIT"
     ],
     "pass_to_pass": []
   },
