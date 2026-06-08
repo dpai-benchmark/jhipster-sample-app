@@ -6,7 +6,8 @@
   "build_system": "maven",
   "expected": {
     "fail_to_pass": [
-      "io.github.jhipster.sample.web.rest.RememberMeIT"
+      "io.github.jhipster.sample.web.rest.RememberMeIT.testRememberMe",
+      "io.github.jhipster.sample.web.rest.RememberMeIT.testRememberMeWithInvalidToken"
     ],
     "pass_to_pass": []
   },
